@@ -1,0 +1,11 @@
+# Ignore all files
+*
+
+# Unignore those files
+!.gitignore
+!*.c
+!*.h
+!*.hpp
+!*.cpp
+!README.md
+!Makefile
