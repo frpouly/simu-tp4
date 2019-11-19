@@ -6,7 +6,7 @@
 
 extern "C" {
 	#include "rand.h"
-}
+};
 
 class Rabbit {
 	private:
