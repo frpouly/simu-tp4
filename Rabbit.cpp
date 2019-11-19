@@ -29,7 +29,6 @@ bool Rabbit::live_one_more_month()
 	{
 		if(genrand_real1() - sexual_maturity_tab[age_month] <= 0)
 		{
-			std::cout << "now mature" << std::endl;
 			sexual_maturity = true;
 			death_rate = 50;
 		}
@@ -41,6 +40,7 @@ bool Rabbit::live_one_more_month()
 	{
 		i_will_survive = false;
 	}
+	age_month++;
 	return i_will_survive;
 }
 
