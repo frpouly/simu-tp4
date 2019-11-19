@@ -3,6 +3,7 @@
 #include "MaleRabbit.hpp"
 #include <iostream>
 #include <list>
+#include "rand.h"
 
 extern "C" {
 	#include "rand.h"
@@ -10,33 +11,51 @@ extern "C" {
 
 int main(int, char **)
 {
-	typedef std::list<Rabbit> rabbit_list;
 	unsigned long init[4]={0x123, 0x234, 0x345, 0x456}, length=4;
     init_by_array(init, length);
-    rabbit_list rabbits;
+    std::list<MaleRabbit> males;
+    std::list<FemaleRabbit> females;
     for(int i = 0; i < 100; i++)
     {
         if(genrand_real1() < 0.5)
-    	   rabbits.push_back(FemaleRabbit(12, true));
+    	   females.push_back(FemaleRabbit(12, true));
         else
-            rabbits.push_back(MaleRabbit(12, true));
+            males.push_back(MaleRabbit(12, true));
     }
-    while(!rabbits.empty())
+    while(!males.empty() && !females.empty())
     {
-    	std::cout << rabbits.size() << std::endl;
-    	rabbit_list::iterator it = rabbits.begin();
-    	while (it != rabbits.end())
+    	std::cout << males.size();
+        std::cout << "\t";
+        std::cout << females.size() << std::endl;
+    	std::list<MaleRabbit>::iterator it = males.begin();
+        std::list<MaleRabbit>::iterator end = males.end();
+    	while (it != end)
     	{
     		bool survive = (*it).live_one_more_month();
     		if(!survive)
     		{
-    			rabbits.erase(it++);
+    			males.erase(it++);
     		}
     		else
     		{
     			++it;
     		}
     	}
+        std::list<FemaleRabbit>::iterator it2 = females.begin();
+        std::list<FemaleRabbit>::iterator end2 = females.end();
+        while(it2 != end2)
+        {
+            bool survive = (*it2).live_one_more_month();
+            if(!survive)
+            {
+                females.erase(it2++);
+            }
+            else
+            {
+                (*it2).give_birth(females, males);   
+                ++it2;
+            }
+        }
     }
 	return 0;
 }

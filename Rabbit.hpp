@@ -2,7 +2,7 @@
 #define _RABBIT_HPP_
 
 #include <iostream>
-#include <list>
+#include "rand.h"
 
 extern "C" {
 	#include "rand.h"

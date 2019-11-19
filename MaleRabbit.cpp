@@ -10,7 +10,8 @@ MaleRabbit::MaleRabbit() :
 MaleRabbit::MaleRabbit(int age, bool mature) :
 	Rabbit(age, mature)
 {
-	++number_mature;
+	if(mature)
+		++number_mature;
 }
 
 bool MaleRabbit::live_one_more_month()
@@ -18,7 +19,9 @@ bool MaleRabbit::live_one_more_month()
 	bool mature_before = is_mature();
 	bool alive = Rabbit::live_one_more_month();
 	if(!mature_before && is_mature())
+	{
 		++number_mature;
+	}
 	return alive;
 }
 
@@ -31,5 +34,8 @@ MaleRabbit::~MaleRabbit()
 
 bool MaleRabbit::is_there_mature_male()
 {
-	return number_mature > 0;
+	bool ret = true;
+	if(number_mature == 0)
+		ret = false;
+	return ret;
 }

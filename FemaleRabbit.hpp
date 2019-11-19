@@ -2,14 +2,13 @@
 #define _FEMALE_RABBIT__HPP_
 
 #include "Rabbit.hpp"
-#include <iostream>
+#include "MaleRabbit.hpp"
 #include <list>
+#include "rand.h"
 
 extern "C" {
 	#include "rand.h"
-}
-
-typedef std::list<Rabbit> rabbit_list;
+};
 
 class FemaleRabbit : public Rabbit {
 	private:
@@ -17,7 +16,8 @@ class FemaleRabbit : public Rabbit {
 	public:
 		FemaleRabbit();
 		FemaleRabbit(int age, bool maturity);
-		rabbit_list give_birth();
+		bool live_one_more_month() override;
+		void give_birth(std::list<FemaleRabbit> &females, std::list<MaleRabbit> &males);
 };
 
 #endif
