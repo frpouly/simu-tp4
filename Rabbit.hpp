@@ -1,12 +1,12 @@
 #ifndef _RABBIT_HPP_
 #define _RABBIT_HPP_
 
-#include "rand.h"
 #include <iostream>
+#include <list>
 
 extern "C" {
 	#include "rand.h"
-}
+};
 
 class Rabbit {
 	private:
@@ -17,7 +17,7 @@ class Rabbit {
 	public:
 		Rabbit();
 		Rabbit(int age, bool mature);
-		bool live_one_more_month();
+		virtual bool live_one_more_month();
 		bool is_mature();
 };
 

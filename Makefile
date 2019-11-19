@@ -1,7 +1,7 @@
 CXX = g++
 CC = gcc
 
-CXXSRC=main.cpp Rabbit.cpp
+CXXSRC=main.cpp Rabbit.cpp FemaleRabbit.cpp MaleRabbit.cpp
 #SRC=$(wildcard *.cpp)
 CSRC=rand.c
 EXE=simu_tp4

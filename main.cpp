@@ -1,4 +1,6 @@
 #include "Rabbit.hpp"
+#include "FemaleRabbit.hpp"
+#include "MaleRabbit.hpp"
 #include <iostream>
 #include <list>
 
@@ -14,7 +16,10 @@ int main(int, char **)
     rabbit_list rabbits;
     for(int i = 0; i < 100; i++)
     {
-    	rabbits.push_back(Rabbit(12, true));
+        if(genrand_real1() < 0.5)
+    	   rabbits.push_back(FemaleRabbit(12, true));
+        else
+            rabbits.push_back(MaleRabbit(12, true));
     }
     while(!rabbits.empty())
     {
