@@ -1,7 +1,7 @@
 CXX = g++
 CC = gcc
 
-CXXSRC=main.cpp
+CXXSRC=main.cpp Rabbit.cpp
 #SRC=$(wildcard *.cpp)
 CSRC=rand.c
 EXE=simu_tp4
@@ -24,10 +24,9 @@ build/%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -o $@ -c $<
 	
 build/%.o: %.c
-	$(CC) $(CFLAGS) -o $@ -c $<
+	$(CXX) $(CFLAGS) -o $@ -c $<
 
 clean:
 	rm -rf build core *.gch
 
 -include $(DEP)
-
